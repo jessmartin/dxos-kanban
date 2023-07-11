@@ -5,13 +5,14 @@
 import * as dxos_echo_schema from "@dxos/echo-schema";
 
 const schemaJson =
-  '{"nested":{"jessmartin":{"nested":{"dxostasks":{"nested":{"Todo":{"options":{"(object)":true},"fields":{"title":{"type":"string","id":1},"completed":{"type":"bool","id":2}}}}}}}}}';
+  '{"nested":{"jessmartin":{"nested":{"dxostasks":{"nested":{"Todo":{"options":{"(object)":true},"fields":{"title":{"type":"string","id":1},"completed":{"type":"bool","id":2},"status":{"type":"string","id":3}}}}}}}}}';
 
 export const schema = dxos_echo_schema.EchoSchema.fromJson(schemaJson);
 
 export type TodoProps = {
   title: string;
   completed: boolean;
+  status: string;
 };
 
 export class Todo extends dxos_echo_schema.TypedObject<TodoProps> {
@@ -29,6 +30,7 @@ export class Todo extends dxos_echo_schema.TypedObject<TodoProps> {
   }
   declare title: string;
   declare completed: boolean;
+  declare status: string;
 }
 
 schema.registerPrototype(Todo);
