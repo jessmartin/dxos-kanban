@@ -19,7 +19,7 @@ export const App = () => {
   const serviceWorker = useRegisterSW();
   return (
     <ThemeProvider
-      appNs="dxos-tasks"
+      appNs="dxos-kanban"
       resourceExtensions={[appkitTranslations]}
       fallback={<GenericFallback />}
     >

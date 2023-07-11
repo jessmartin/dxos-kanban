@@ -12,7 +12,7 @@ export default defineConfig({
     host: true,
   },
   build: {
-    outDir: "out/dxos-tasks",
+    outDir: "out/dxos-kanban",
   },
 
   plugins: [
@@ -35,8 +35,8 @@ export default defineConfig({
       },
       includeAssets: ["favicon.ico"],
       manifest: {
-        name: "dxos-tasks",
-        short_name: "dxos-tasks",
+        name: "dxos-kanban",
+        short_name: "dxos-kanban",
         theme_color: "#ffffff",
         icons: [
           {
