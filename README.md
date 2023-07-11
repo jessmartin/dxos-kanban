@@ -1,5 +1,5 @@
-# dxos-tasks
-
+# dxos-kanban
+Revert "Remove twitter since twitter account is locked"
 This app was created with the DXOS `bare` application template.
 
 - [x] Progressive Web App support
