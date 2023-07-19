@@ -10,12 +10,12 @@ import { Todo } from "./proto";
 
 export const Kanban = () => {
   useIdentity({ login: true });
-  const [space] = useSpaces();
+  const [space] = useSpaces(); // not ordered consistently
   const todos = useQuery<Todo>(space, Todo.filter());
   const [activeTodos, setActiveTodos] = useState<Todo[]>([]);
   const [completedTodos, setCompletedTodos] = useState<Todo[]>([]);
   const [doingTodos, setDoingTodos] = useState<Todo[]>([]);
-  const [editingTask, setEditingTask] = useState<number | null>(null);
+  const [editingTask, setEditingTask] = useState<string | null>(null);
 
   useEffect(() => {
     setCompletedTodos(todos?.filter((todo) => todo.completed));
@@ -43,11 +43,12 @@ export const Kanban = () => {
         {activeTodos.map((task, index) => (
           <div
             className={`card text-sm bg-white rounded drop-shadow-sm py-1 px-2 mb-2 min-h-[30px] ${
-              editingTask === index ? "border" : ""
+              editingTask === task.id ? "border" : ""
             }`}
-            onClick={() => setEditingTask(index)}
+            onClick={() => setEditingTask(task.id)}
+            key={task.id}
           >
-            {editingTask === index ? (
+            {editingTask === task.id ? (
               <input
                 className="w-full outline-none bg-none"
                 value={task.title}
@@ -62,7 +63,7 @@ export const Kanban = () => {
                     setEditingTask(null);
                   }
                 }}
-                autoFocus={editingTask === index}
+                autoFocus={editingTask === task.id}
               />
             ) : (
               task.title
@@ -82,11 +83,12 @@ export const Kanban = () => {
         {doingTodos.map((task, index) => (
           <div
             className={`card text-sm bg-white rounded drop-shadow-sm py-1 px-2 mb-2 min-h-[30px] ${
-              editingTask === index ? "border" : ""
+              editingTask === task.id ? "border" : ""
             }`}
-            onClick={() => setEditingTask(index)}
+            onClick={() => setEditingTask(task.id)}
+            key={task.id}
           >
-            {editingTask === index ? (
+            {editingTask === task.id ? (
               <input
                 className="w-full outline-none bg-none"
                 value={task.title}
@@ -101,7 +103,7 @@ export const Kanban = () => {
                     setEditingTask(null);
                   }
                 }}
-                autoFocus={editingTask === index}
+                autoFocus={editingTask === task.id}
               />
             ) : (
               task.title
@@ -120,11 +122,12 @@ export const Kanban = () => {
         {completedTodos.map((task, index) => (
           <div
             className={`card text-sm bg-white rounded drop-shadow-sm py-1 px-2 mb-2 min-h-[30px] ${
-              editingTask === index ? "border" : ""
+              editingTask === task.id ? "border" : ""
             }`}
-            onClick={() => setEditingTask(index)}
+            onClick={() => setEditingTask(task.id)}
+            key={task.id}
           >
-            {editingTask === index ? (
+            {editingTask === task.id ? (
               <input
                 className="w-full outline-none bg-none"
                 value={task.title}
@@ -139,7 +142,7 @@ export const Kanban = () => {
                     setEditingTask(null);
                   }
                 }}
-                autoFocus={editingTask === index}
+                autoFocus={editingTask === task.id}
               />
             ) : (
               task.title
