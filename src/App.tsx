@@ -30,7 +30,8 @@ export const TaskListContainer = () => {
   const space = useSpace(spaceKey);
   const tasks = useQuery<Task>(space, Task.filter());
   const activeTasks = tasks.filter(
-    (todo) => !todo.completed && todo.status !== "doing"
+    (todo) =>
+      !todo.completed && (todo.status === undefined || todo.status !== "doing")
   );
   const completedTasks = tasks.filter((todo) => todo.completed);
   const doingTasks = tasks.filter(
@@ -51,8 +52,8 @@ export const TaskListContainer = () => {
       //   // TODO: desired API to teach shell how to form share URLs
       //   // void shell.shareSpace({ spaceKey: space?.key, invitationUrl: (invitationCode) => `/space/${space.key}?spaceInvitationCode=${invitationCode}` });
       // }}
-      onTaskCreate={(newTaskTitle) => {
-        const task = new Task({ title: newTaskTitle, completed: false });
+      onTaskCreate={(newTaskTitle, status, completed) => {
+        const task = new Task({ title: newTaskTitle, status, completed });
         space?.db.add(task);
       }}
       // onTaskRemove={(task) => {

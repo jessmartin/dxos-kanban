@@ -12,7 +12,11 @@ export type KanbanProps = {
   doingTasks?: Task[];
   completedTasks?: Task[];
   // onInviteClick?: () => any;
-  onTaskCreate?: (text: string) => any;
+  onTaskCreate?: (
+    newTaskTitle: string,
+    status: string,
+    completed: boolean
+  ) => any;
   // onTaskRemove?: (task: Task) => any;
   onTaskTitleChange?: (task: Task, newTitle: string) => any;
   // onTaskCheck?: (task: Task, checked: boolean) => any;
@@ -68,7 +72,7 @@ export const Kanban = (props: KanbanProps) => {
         ))}
         <button
           className="btn btn-primary btn-sm text-sm rounded py-1 px-2 mb-2 hover:bg-white hover:shadow w-full text-left h-[30px]"
-          onClick={() => onTaskCreate("todo")}
+          onClick={() => onTaskCreate("New todo", "todo", false)}
         >
           + Add Todo
         </button>
@@ -108,7 +112,7 @@ export const Kanban = (props: KanbanProps) => {
         ))}
         <button
           className="btn btn-primary btn-sm text-sm rounded py-1 px-2 mb-2 hover:bg-white hover:shadow w-full text-left h-[30px]"
-          onClick={() => onTaskCreate("doing")}
+          onClick={() => onTaskCreate("New todo", "doing", false)}
         >
           + Add Todo
         </button>
@@ -147,7 +151,7 @@ export const Kanban = (props: KanbanProps) => {
         ))}
         <button
           className="btn btn-primary btn-sm text-sm rounded py-1 px-2 mb-2 hover:bg-white hover:shadow w-full text-left h-[30px]"
-          onClick={() => onTaskCreate("done")}
+          onClick={() => onTaskCreate("New todo", "done", true)}
         >
           + Add Todo
         </button>

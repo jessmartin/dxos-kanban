@@ -4,7 +4,7 @@
 
 syntax = "proto3";
 
-package dxos.app.kanban;
+package dxos.app.tasks;
 
 message Task {
   option (object) = true;
