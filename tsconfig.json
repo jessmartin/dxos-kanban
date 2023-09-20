@@ -4,7 +4,7 @@
     "jsx": "react",
     "emitDeclarationOnly": false,
     "lib": ["DOM", "ESNext"],
-    "outDir": "dist",
+    "outDir": "out/dxos-kanban",
     "skipLibCheck": true,
     "types": ["node"]
   },

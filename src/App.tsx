@@ -78,8 +78,6 @@ export const Home = () => {
 
   useEffect(() => {
     if (deviceInvitationCode) {
-      // TODO: desired API for joining a device
-      // shell.joinDevice({ invitationCode: deviceInvitationCode });
       setSearchParams((p) => {
         p.delete("deviceInvitationCode");
         return p;
