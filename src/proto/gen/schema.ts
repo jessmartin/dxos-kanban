@@ -5,32 +5,32 @@
 import * as dxos_echo_schema from "@dxos/echo-schema";
 
 const schemaJson =
-  '{"nested":{"jessmartin":{"nested":{"dxostasks":{"nested":{"Todo":{"options":{"(object)":true},"fields":{"title":{"type":"string","id":1},"completed":{"type":"bool","id":2},"status":{"type":"string","id":3}}}}}}}}}';
+  '{"nested":{"dxos":{"nested":{"app":{"nested":{"kanban":{"nested":{"Task":{"options":{"(object)":true},"fields":{"title":{"type":"string","id":1},"completed":{"type":"bool","id":2},"status":{"type":"string","id":3}}}}}}}}}}}';
 
 export const schema = dxos_echo_schema.EchoSchema.fromJson(schemaJson);
 
-export type TodoProps = {
+export type TaskProps = {
   title: string;
   completed: boolean;
   status: string;
 };
 
-export class Todo extends dxos_echo_schema.TypedObject<TodoProps> {
-  static readonly type = schema.getType("jessmartin.dxostasks.Todo");
+export class Task extends dxos_echo_schema.TypedObject<TaskProps> {
+  static readonly type = schema.getType("dxos.app.kanban.Task");
 
-  static filter(opts?: Partial<TodoProps>): dxos_echo_schema.TypeFilter<Todo> {
-    return Todo.type.createFilter(opts);
+  static filter(opts?: Partial<TaskProps>): dxos_echo_schema.TypeFilter<Task> {
+    return Task.type.createFilter(opts);
   }
 
   constructor(
-    initValues?: Partial<TodoProps>,
+    initValues?: Partial<TaskProps>,
     opts?: dxos_echo_schema.TypedObjectOpts
   ) {
-    super({ ...initValues }, Todo.type, opts);
+    super({ ...initValues }, Task.type, opts);
   }
   declare title: string;
   declare completed: boolean;
   declare status: string;
 }
 
-schema.registerPrototype(Todo);
+schema.registerPrototype(Task);

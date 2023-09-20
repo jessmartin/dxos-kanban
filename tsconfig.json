@@ -6,7 +6,7 @@
     "lib": ["DOM", "ESNext"],
     "outDir": "dist",
     "skipLibCheck": true,
-    "types": ["node", "vite-plugin-pwa/client"]
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "vite.config.ts"],

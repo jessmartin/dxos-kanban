@@ -1,11 +1,9 @@
-# dxos-kanban
-Revert "Remove twitter since twitter account is locked"
-This app was created with the DXOS `bare` application template.
+# DXOS Kanban
 
-- [x] Progressive Web App support
+This app was created with a DXOS application template.
+
 - [x] React
 - [x] DXOS UI System
-- [x] Storybook
 
 Run the app with `npm`:
 
@@ -20,17 +18,3 @@ Build the app to the `out` folder:
 npm run build
 ```
 
-Deploy the app to a [DXOS Kube](https://docs.dxos.org/guide/kube):
-
-```bash
-npm run deploy
-```
-
-Run storybook in this project
-
-```bash
-npm run storybook
-```
-
-[📚 Using ECHO with React](https://docs.dxos.org/guide/react)
-[📚 DXOS Documentation](https://docs.dxos.org)

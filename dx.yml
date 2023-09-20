@@ -1,11 +1,11 @@
 version: 1
 package:
   modules:
-    - name: dxos-kanban
+    - name: "dxos-kanban"
       type: dxos:type/app
       build:
         command: npm run build
-        outdir: out/dxos-kanban
+        outdir: "out/dxos-kanban"
 runtime:
   client:
     storage:

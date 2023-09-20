@@ -1,8 +1,12 @@
+//
+// Copyright 2023 DXOS.org
+//
+
 syntax = "proto3";
 
-package jessmartin.dxostasks;
+package dxos.app.kanban;
 
-message Todo {
+message Task {
   option (object) = true;
 
   string title = 1;

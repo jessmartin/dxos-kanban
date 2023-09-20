@@ -2,9 +2,8 @@ import { defineConfig } from "vite";
 import { ConfigPlugin } from "@dxos/config/vite-plugin";
 import { VaultPlugin } from "@dxos/vault/vite-plugin";
 import react from "@vitejs/plugin-react";
-import { ThemePlugin } from "@dxos/aurora-theme/plugin";
 import { resolve } from "path";
-import { VitePWA } from "vite-plugin-pwa";
+import { ThemePlugin } from "@dxos/aurora-theme/plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,7 +17,7 @@ export default defineConfig({
   plugins: [
     VaultPlugin(),
     ConfigPlugin(),
-    react(),
+    react({ jsxRuntime: "classic" }),
     ThemePlugin({
       content: [
         resolve(__dirname, "./index.html"),
@@ -27,30 +26,6 @@ export default defineConfig({
         resolve(__dirname, "node_modules/@dxos/aurora-theme/dist/**/*.mjs"),
         resolve(__dirname, "node_modules/@dxos/react-appkit/dist/**/*.mjs"),
       ],
-    }),
-    VitePWA({
-      registerType: "prompt",
-      workbox: {
-        maximumFileSizeToCacheInBytes: 30000000,
-      },
-      includeAssets: ["favicon.ico"],
-      manifest: {
-        name: "dxos-kanban",
-        short_name: "dxos-kanban",
-        theme_color: "#ffffff",
-        icons: [
-          {
-            src: "icons/icon-32.png",
-            sizes: "32x32",
-            type: "image/png",
-          },
-          {
-            src: "icons/icon-256.png",
-            sizes: "256x256",
-            type: "image/png",
-          },
-        ],
-      },
     }),
   ],
 });
