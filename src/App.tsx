@@ -19,7 +19,7 @@ import {
 import { useSpace, useQuery } from "@dxos/react-client/echo";
 
 import { Kanban } from "./Kanban";
-import { Task } from "./proto";
+import { Task, types } from "./proto";
 
 // Dynamics allows configuration to be supplied by the hosting KUBE.
 const config = async () => new Config(await Dynamics(), Local(), Defaults());
@@ -123,6 +123,7 @@ export const App = () => {
         ) {
           await client.halo.createIdentity();
         }
+        client.addTypes(types);
       }}
     >
       <RouterProvider router={router} />
